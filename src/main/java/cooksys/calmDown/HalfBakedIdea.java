@@ -1,6 +1,5 @@
 package cooksys.calmDown;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
@@ -11,8 +10,9 @@ import cooksys.interfaces.ConditionalThing;
 
 @Component
 public class HalfBakedIdea {
-	
+
 	private Set<ActionExecutor> actions;
+	private Integer actionCount = 0;
 	LoggerComponent logger;
 
 	public HalfBakedIdea(Set<ActionExecutor> actions, LoggerComponent logger) {
@@ -22,6 +22,17 @@ public class HalfBakedIdea {
 
 	public void doThings(ConditionalThing o) {
 		logger.logIt("I'm taking " + actions.size() + " actions!");
+		actionCount += actions.size();
 		actions.forEach(action -> action.takeAction(o));
+		logger.logIt("I've taken " + actionCount + " actions!");
 	}
+
+	public void setActionCount(Integer actionCount) {
+		this.actionCount = actionCount;
+	}
+
+	public Integer getActionCount() {
+		return actionCount;
+	}
+
 }
