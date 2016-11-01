@@ -27,10 +27,6 @@ public class HalfBakedIdea {
 		logger.logIt("I've taken " + actionCount + " actions!");
 	}
 
-	public void setActionCount(Integer actionCount) {
-		this.actionCount = actionCount;
-	}
-
 	public Integer getActionCount() {
 		return actionCount;
 	}
